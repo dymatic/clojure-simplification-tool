@@ -1,0 +1,24 @@
+CST - The Clojure Simplification Tool
+
+===================
+Not just a library||
+===================
+CST is more than just a library. It is a collection of libraries that I feel embody the spirit of Clojure and functional programming. Working with the Clojure data types, recursion, and lists, this library provides useful abstractions that none other in the world of Clojure has yes presented (especially with files).
+
+Take a step into the cst, no matter what your project may be. You don't even need to know Clojure to take advantage of the functions here in Java, so get hacking!
+
+==================
+Licensing||||||||||
+==================
+CST is licensed under the GNU GPL v2, because I'm a capitalist. Sorry GPLv3 :(
+If you plan to fork the project (eithero n github or other) please don't try to brand it as the "official" repository. Everyone is free to take the code and modify as they see fit, but don't obfuscate the official source with your work.
+
+==================||||||
+Development - IMPORTANT|
+==================||||||
+This library is in heavy development. Direcotry and naming structure changes as well as broken functions, functions with bugs, or just sloppy code in general can be expected. Also, sorry for whoever is following this project. I release minor commits sometimes, such as formatting.
+
+================
+CHANGELOG||||||||
+================
+11:22:12-Added (ns) declarations in all lib.x files, split up libFunctional (was called libClj.clj), and rewrote lines-between and subfile to work on lists instead of files. Added README even though this repo has been around a while. I have a really confusing directory structure (nested git repositories) so I have goofed it up a few times.
