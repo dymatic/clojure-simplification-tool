@@ -23,7 +23,7 @@
 (defn sniplist [lis pos & endpos]
   "Snip a list starting at the pos and ending at the endpos."
   (loop [ll lis, ctr 0, col '()]
-    (if (>= ctr (if (= nil endpos) (count lis) (first endpos))) (rlist col)
+    (if (>= ctr (if (= nil (first endpos)) (dec (count lis)) (first endpos))) (rlist col)
       (recur
         (rest ll)
         (inc ctr)
