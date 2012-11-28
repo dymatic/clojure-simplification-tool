@@ -25,7 +25,7 @@
 ;Get a specific numbered line from a file
 (defn getline [file line]
   "Gets the line number line from file."
-  (nth (.split (slurp file) "\n") line))
+  (nth (lines file) line))
 
 ;Get the complete list of lines from a file.
 (defn lines [filename]

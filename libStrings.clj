@@ -11,8 +11,8 @@
     (and (.contains x d1) (.contains y d2))))
 
 ;Get the information between the delim and end.
-(defn after [string delim end]
-  "Get what is after delim in the string, finishing at string end"
-  (let [x (.substring string (inc (.indexOf string delim)))]
-    (.substring string (+ (count delim) (.indexOf string delim)) (inc (.indexOf x end)))))
 
+(defn after [string d1 & d2]
+  "Get what is after d1 and possibly before d2"
+  (let [x (.substring string (inc (.indexOf string d1)))]
+    (.substring x 0 (if (not (bad? d2)) (.indexOf x (first d2)) (count x)))))
