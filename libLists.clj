@@ -13,11 +13,10 @@
 ;Recurse over the list, seeing if the supplied condition is found in the list.
 (defn orlist [condition lis]
   "Is condition found in lis?"
-  (loop [ll lis]
     (cond
-      (= (first ll) condition) true
-      (= ll ()) false
-      :else (recur (rest ll)))))
+      (= (first lis) condition) true
+      (= lis ()) false
+      :else (recur condition (rest lis))))
 
 ;Cut a list into parts, either in half or by extracting a section with endPos.
 (defn sniplist [lis pos & endpos]
@@ -32,10 +31,38 @@
 ;Get information between two list entries, starting at pos.
 (defn between [lis pos d1 d2]
   (loop [rf (sniplist lis pos), col '(), state false]
-    (if (or (and state (.contains (first rf) d2)) (bad? rf))
+    (if (or (bad? rf) (and state (.contains (first rf) d2)))
       (rlist col)
       (recur
         (rest rf)
         (if state (conj col (first rf)) col)
         (or state (.contains (first rf) d1))))))
 
+(defn loc [lis toLoc]
+  "Location of toLoc in the list"
+  (loop [ll lis, counter 0]
+    (if (or (= (first ll) toLoc) (= ll '()))
+      counter 
+      (recur (rest ll) (inc counter)))))
+
+(defn found-in? [lis string]
+  "Is the string found inside the list?"
+	  (cond
+	    (= lis ()) false
+	    (.contains (first lis) string) true
+	    :else (recur (rest lis) string)))
+    
+(defn found-from? [list string]
+  "Is anything from the list found in the string?"
+  (cond
+    (= list ()) false
+    (.contains string (first list)) true
+    :else (recur (rest list) string)))
+
+(defn remove-from [lis toRemove]
+  "Remove toRemove from the list."
+  (loop [ll lis, col '()]
+    (if (bad? ll) (rlist col)
+      (recur (rest ll)
+             (if (= (first ll) toRemove) col
+               (conj col (first ll)))))))

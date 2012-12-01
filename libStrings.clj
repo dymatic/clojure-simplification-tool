@@ -14,5 +14,5 @@
 
 (defn after [string d1 & d2]
   "Get what is after d1 and possibly before d2"
-  (let [x (.substring string (inc (.indexOf string d1)))]
+  (let [x (.substring string (+ (.indexOf string d1) (count d1)))]
     (.substring x 0 (if (not (bad? d2)) (.indexOf x (first d2)) (count x)))))

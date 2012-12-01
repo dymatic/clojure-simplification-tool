@@ -10,15 +10,17 @@ Take a step into the cst, no matter what your project may be. You don't even nee
 ==================
 Licensing||||||||||
 ==================
-CST is licensed under the GNU GPL v2, because I'm a capitalist. Sorry GPLv3 :(
-If you plan to fork the project (eithero n github or other) please don't try to brand it as the "official" repository. Everyone is free to take the code and modify as they see fit, but don't obfuscate the official source with your work.
+CST is licensed under the GNU LGPL v2, because I'm a capitalist. Sorry GPLv3 :(
+If you plan to fork the project (either on github or other) please don't try to brand it as the "official" repository. Everyone is free to take the code and modify as they see fit, but don't obfuscate the official source with your work.
 
 ==================||||||
 Development - IMPORTANT|
 ==================||||||
-This library is in heavy development. Direcotry and naming structure changes as well as broken functions, functions with bugs, or just sloppy code in general can be expected. Also, sorry for whoever is following this project. I release minor commits sometimes, such as formatting.
+This library is having the bugs kicked out of it! It will be ready for use soon, and as long as you stick to mainstream functions you should be A-ok!
 
 ================
 CHANGELOG||||||||
 ================
 11:22:12-Added (ns) declarations in all lib.x files, split up libFunctional (was called libClj.clj), and rewrote lines-between and subfile to work on lists instead of files. Added README even though this repo has been around a while. I have a really confusing directory structure (nested git repositories) so I have goofed it up a few times.
+
+12:1:12-Added a lot of functions to lib.lists. Fixed a few in lib.string, and general fixes all around.
