@@ -16,3 +16,10 @@
   "Get what is after d1 and possibly before d2"
   (let [x (.substring string (+ (.indexOf string d1) (count d1)))]
     (.substring x 0 (if (not (bad? d2)) (.indexOf x (first d2)) (count x)))))
+
+(defn replaceList [string lis & with]
+  "Goes through the list, replacing everything in the lis form the string with with"
+  (loop [l1 lis, s string]
+    (if (bad? l1) s
+      (recur (rest l1)
+             (.replace s (first l1) (if (not (bad? with)) (first with) ""))))))
