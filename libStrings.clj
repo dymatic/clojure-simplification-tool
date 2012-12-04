@@ -1,7 +1,6 @@
 ;LibStrings
 ;Perform actions on sequences, splitting or getting information.
 (ns lib.libStrings)
-(import lib)
 
 ;Test to see whether or not a point in a string is in between d1 and d2.
 (defn in-between? [string pos d1 d2]
@@ -20,6 +19,6 @@
 (defn replaceList [string lis & with]
   "Goes through the list, replacing everything in the lis form the string with with"
   (loop [l1 lis, s string]
-    (if (bad? l1) s
+    (if (= l1 ()) s
       (recur (rest l1)
-             (.replace s (first l1) (if (not (bad? with)) (first with) ""))))))
+             (.replace s (first l1) (if (not (= with nil)) (first with) ""))))))

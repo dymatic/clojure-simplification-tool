@@ -1,7 +1,7 @@
 ;LibFunctional
 ;specific implementations for other library functions, like bad?.
 (ns lib.libFunctional)
-(import lib)
+
 
 ;If condition is true, perform function 1 on the list. Else, call function 2 on the list.
 (defn firstorest [condition fa fb lis]

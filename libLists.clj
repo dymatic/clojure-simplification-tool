@@ -1,13 +1,12 @@
 ;libLists
 ;Perform actions on lists, extracting or creating and re-organizing information on a large scale.
 (ns lib.libLists)
-(import lib)
 
 ;Reverse the order of a list by conjing values to the head.
 (defn rlist [lis]
   "Reverses a list"
   (loop [li lis, ll '()]
-    (if (bad? li) ll
+    (if (= li ()) ll
       (recur (rest li) (conj ll (first li))))))
 
 ;Recurse over the list, seeing if the supplied condition is found in the list.
@@ -22,7 +21,7 @@
 (defn sniplist [lis pos & endpos]
   "Snip a list starting at the pos and ending at the endpos."
   (loop [ll lis, ctr 0, col '()]
-    (if (>= ctr (if (= nil (first endpos)) (dec (count lis)) (first endpos))) (rlist col)
+    (if (or (= ll ()) (>= ctr (if (= nil (first endpos)) (dec (count lis)) (first endpos)))) (rlist col)
       (recur
         (rest ll)
         (inc ctr)
@@ -31,7 +30,7 @@
 ;Get information between two list entries, starting at pos.
 (defn between [lis pos d1 d2]
   (loop [rf (sniplist lis pos), col '(), state false]
-    (if (or (bad? rf) (and state (.contains (first rf) d2)))
+    (if (or (= rf '()) (and state (.contains (first rf) d2)))
       (rlist col)
       (recur
         (rest rf)
@@ -41,7 +40,7 @@
 (defn loc [lis toLoc]
   "Location of toLoc in the list"
   (loop [ll lis, counter 0]
-    (if (or (= (first ll) toLoc) (= ll '()))
+    (if (or (= (first ll) toLoc) (= ll ()))
       counter 
       (recur (rest ll) (inc counter)))))
 
