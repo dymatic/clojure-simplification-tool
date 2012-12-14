@@ -45,7 +45,7 @@
       (recur (rest ll) (inc counter)))))
 
 (defn found-in? [lis string]
-  "Is the string found inside the list?"
+  "Is the string found inside the list?" 
 	  (cond
 	    (= lis ()) false
 	    (.contains (first lis) string) true
@@ -61,7 +61,7 @@
 (defn remove-from [lis toRemove]
   "Remove toRemove from the list."
   (loop [ll lis, col '()]
-    (if (bad? ll) (rlist col)
+    (if (= ll ()) (rlist col)
       (recur (rest ll)
              (if (= (first ll) toRemove) col
                (conj col (first ll)))))))

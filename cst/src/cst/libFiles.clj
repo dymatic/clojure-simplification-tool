@@ -1,7 +1,7 @@
 ;LibFiles
 ;perform actions on on files, writing or extracting information.
 (ns lib.libFiles
-  (:require '[lib.libLists :as lists]))
+  (use 'lib.libLists))
 
 ;Get the complete list of lines from a file.
 (defn lines [filename]
@@ -37,12 +37,12 @@
 ;Break a file in half at a specified point. Then, end at the endpos if specified.
 (defn subfile [filename pos & endpos]
   "Breaks a file in half at a specified point or endpos"
-  (lists/sniplist (lines filename) pos (first endpos)))
+  (sniplist (lines filename) pos (first endpos)))
 
 ;Gets the lines in between d1 and d2, starting at pos where pos is the line to start.
 (defn lines-between [file pos d1 d2]
   "Get the lines between d1 and d2 in a file"
-  (lists/between (lines file)
+  (between (lines file)
            pos
            d1
            d2))

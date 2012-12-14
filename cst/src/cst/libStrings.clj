@@ -11,10 +11,14 @@
 
 ;Get the information between the delim and end.
 
+(defn safe [string stringop check]
+  "Only perform stringop on the string if check is inside of the string"
+  (if (.contains string check) (stringop string) string))
+
 (defn after [string d1 & d2]
   "Get what is after d1 and possibly before d2"
   (let [x (.substring string (+ (.indexOf string d1) (count d1)))]
-    (.substring x 0 (if (not (bad? d2)) (.indexOf x (first d2)) (count x)))))
+    (.substring x 0 (if (not (= d2 nil)) (.indexOf x (first d2)) (count x)))))
 
 (defn replaceList [string lis & with]
   "Goes through the list, replacing everything in the lis form the string with with"

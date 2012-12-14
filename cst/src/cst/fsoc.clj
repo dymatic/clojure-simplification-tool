@@ -22,11 +22,3 @@
 				(rest louts)
 				(conj ll (list (first linps) (first louts)))))))
 
-(defn fsoc->map [fsoclist side]
-"Turn an fsoc list into a map where the car is the lookup key. Side true is for the car to be first."
-(loop [map {}, ll fsoclist]
-	(if (= () ll) 
-		map 
-		(recur 
-			(assoc map (keyword (firstorest side first second (first ll))) (firstorest (not side) first second (first ll)))
-			(rest ll)))))
